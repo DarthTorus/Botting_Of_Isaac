@@ -7,7 +7,7 @@
     "doc": "docs",
     "example": "examples",
     "lib": "lib",
-    "commands":"commands"
+    "commands": "commands"
   },
   "dependencies": {
     "colors": "^1.4.0",
@@ -15,10 +15,7 @@
     "dotenv": "^8.2.0",
     "fs": "0.0.1-security",
     "glob": "^7.1.6",
-    "pngjs-image": "^0.11.7",
-    "request": "^2.88.2",
-    "strawpoll": "^1.1.0",
-    "url": "^0.11.0"
+    "pngjs-image": "^0.11.7"
   },
   "devDependencies": {},
   "scripts": {

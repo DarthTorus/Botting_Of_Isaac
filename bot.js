@@ -11,12 +11,14 @@ require("dotenv").config();
 const Discord = require('discord.js')
 const glob = require( 'glob' )
 const { parse } = require( 'path' )
-
+let PNGImage = require('pngjs-image')
 const client = new Discord.Client()
-let colors = require('colors/safe');
+let colors = require('colors/safe')
+process.Discord = client
 client.PNGImage = PNGImage
 const trigger = process.env.TRIGGER
 client.trigger = trigger
+client.colors = colors
 
 client.loadFiles = function() {
 	client.commands = new Discord.Collection()
@@ -36,7 +38,7 @@ client.loadFiles = function() {
 		})
 		//console.log(client.commands)
 	})
-	client.GAME_LIST = require("./json/statusList.json")
+	//client.GAME_LIST = require("./json/statusList.json")
 
 
 	client.events = new Discord.Collection()
