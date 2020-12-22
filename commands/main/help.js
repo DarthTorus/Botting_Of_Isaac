@@ -1,23 +1,23 @@
 module.exports = {
 	name: 'help',
 	usage: 'help [command] [subcommand]',
-	desc: 'shows all commands or explains specific commands',
+	desc: 'Shows all commands or explains specific commands',
 	alias: ['h'],
 	run( client, message, args ) {
 
 			if ( !args[0] ) {
-					
+
 					const result = client.commands.reduce( ( total, parent, key ) => {
-						
+
 						const commands = parent
                         .filter( command => command.name != 'default' )
                         .map( ({ name }) => `│ ├─${name}` )
                         .join('\n');
 						return total + `├─${key}\n${commands}\n`
-					
+
 					}, '' )
 
-					message.channel.send( `\`\`\`\nTrigger: d-\n${result}\`\`\`` )
+					message.channel.send( `\`\`\`\nTrigger: ${process.env.TRIGGER}\n${result}\`\`\`` )
 
 			} else {
 
@@ -45,6 +45,8 @@ module.exports = {
 					let aliasCheck = ""
 					if(command.alias[0] == "" ) {
 						aliasCheck = "N/A"
+					} else {
+						aliasCheck = command.alias.join(", ")
 					}
 					const result = `\`\`\`\nCommand: ${process.env.TRIGGER}${name}\nUsage: ${command.usage}\nDescription: ${command.desc}\nAlias: ${aliasCheck}\`\`\``
 

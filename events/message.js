@@ -34,13 +34,15 @@ module.exports = (client) => {
       } else {
           parent = 'main'
       }
-      const command = client.commands.get( parent ).find(command => command.name === request || command.alias.includes(request) )
+      
+      const command = client.commands.get( parent ).find(command => command.name === request || command.alias?.includes(request) )
+      
       if ( !command ) return
       // Log the command
 			console.log(client.colors.brightYellow("Server ID: ") + client.colors.magenta(serverID));
 			console.log(client.colors.brightYellow("Channel ID: ") + client.colors.magenta(channelID));
 			console.log(client.colors.brightYellow("Message ID: ") + client.colors.magenta(message.id));
-			console.log(client.colors.brightCyan(`${logDate} ${message.author.username} - ID: `) + client.colors.brightYellow(`@${userID}`));
+			console.log(client.colors.brightCyan(`${logDate} ${userName} - ID: `) + client.colors.brightYellow(`@${userID}`));
 			console.log("in " + client.colors.magenta(serverName + " - #" + channelName));
       console.log(client.colors.white(message.content));
       command.run( client, message, args ) 
