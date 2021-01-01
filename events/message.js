@@ -18,11 +18,11 @@ module.exports = (client) => {
         channelName = message.author.username;
         channelID = message.author.id;
       }
-    
+
       var userName = message.author.username;
       var userID = message.author.id;
       var logDate = new Date().toLocaleTimeString('en-US', { hour12: false })
-     
+
       if ( message.author.bot || !message.content.startsWith( process.env.TRIGGER ) ) return
 
       const args = message.content.split(' ')
@@ -34,10 +34,10 @@ module.exports = (client) => {
       } else {
           parent = 'main'
       }
-      
+
       const command = client.commands.get( parent ).find(command => command.name === request || command.alias?.includes(request) )
-      
-      if ( !command ) return
+
+
       // Log the command
 			console.log(client.colors.brightYellow("Server ID: ") + client.colors.magenta(serverID));
 			console.log(client.colors.brightYellow("Channel ID: ") + client.colors.magenta(channelID));
@@ -45,8 +45,13 @@ module.exports = (client) => {
 			console.log(client.colors.brightCyan(`${logDate} ${userName} - ID: `) + client.colors.brightYellow(`@${userID}`));
 			console.log("in " + client.colors.magenta(serverName + " - #" + channelName));
       console.log(client.colors.white(message.content));
-      command.run( client, message, args ) 
-         
+
+      if ( !command ) {
+        console.log(client.colors.brightRed("Command not found"))
+        return false
+      }
+      command.run( client, message, args )
+
   }
 
 }
