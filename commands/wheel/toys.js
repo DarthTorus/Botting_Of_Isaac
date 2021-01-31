@@ -6,7 +6,7 @@ module.exports = {
   desc: "Spins the Wheel of Toys",
   alias:[""],
   run(client,message,args) {
-    let itemName = client.choose(wheels.toys)
+    let itemName = wheels.toys.choose()
 
     message.channel.send(`Item choosen is: **${itemName}**`)
   }

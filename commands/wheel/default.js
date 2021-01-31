@@ -4,10 +4,10 @@ module.exports = {
   name: "default",
   usage: "wheel",
   desc: "Spins the main Wheel of Isaac",
-  alias: ["spin"],
+  alias: [""],
   run(client,message,args) {
 
-    let wheelName = client.choose(wheels.default)
+    let wheelName = wheels.default.choose()
     message.channel.send(`Wheel has landed on: **${wheelName}**`)
   }
 }
